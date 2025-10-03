@@ -1,22 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <canvas class="gameCanvas"></canvas>
-    <div class="score">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Pixelify+Sans:wght@400..700&family=VT323&display=swap"
+      rel="stylesheet"
+    />
+    <!-- style -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- js library´s -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </head>
+  <body>
+    <script src="pages.js" defer></script>
+
+
+    <div class="score-display">
+      <h2 id="score">Score: 0</h2>
+    </div>
+
+    <div id="startBG" class="startBG"></div>
+
+    <div id="startScreen" class="start-screen">
+      <video id="nitroslavLogo"  class="nitroslavLogo" autoplay muted playsinline>
+        <source src="../Art/nitroslavLogo.webm" type="video/webm"/>
+      </video>
+      <video id="nitroslavLoop" class="nitroslavLogo nitroslavLoop" autoplay loop muted playsinline>
+        <source src="../Art/nitroslavLogoLoop.webm" type="video/webm"/>
+      </video>
+
+      <button id="startBtn">start</button>
+    </div>
+
+    <div id="chooseBG" class="chooseBG"></div>
+
+    <div id="chooseScreen" class="choose-screen">
+      <h1 id="chooseCarTxt">Choose your car</h1>
+
+      <div class="character-container">
+
+        <div id="firstChar" class="choose-character" data-name="Bemwe E30" data-src="../Art/bmwe30_1.PNG">
+          <div class="myChar fade">
+            <div class="char-caption">Bemwe E30</div>
+            <img id="bmw" class="cars" src="../Art/bmwe30_1.PNG" alt="BMW E30" />
+          </div>
+        </div>
+
+        <div id="secondChar" class="choose-character" data-name="Mercedes cl" data-src="../Art/merc_1.PNG">
+          <div class="myChar fade">
+            <div class="char-caption">Mercedes cl</div>
+            <img id="mercedes" class="cars" src="../Art/merc_1.PNG" alt="Mercedes cl" />
+          </div>
+        </div>
+
+        <div id="thirdChar" class="choose-character" data-name="Microlino" data-src="../Art/micro_1.PNG">
+          <div class="myChar fade">
+            <div class="char-caption">Microlino</div>
+            <img id="microlino" class="cars" src="../Art/micro_1.PNG" alt="Microlino" />
+          </div>
+        </div>
+
+        <div id="fourthChar" class="choose-character" data-name="Seat leon" data-src="../Art/seat_1.PNG">
+          <div class="myChar fade">
+            <div class="char-caption">Seat leon</div>
+            <img id="seat" class="cars" src="../Art/seat_1.PNG" alt="Seat leon" />
+          </div>
+        </div>
+        <br />
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div style="text-align: center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+          <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+      </div>
+      <div class="ctnu">
+        <button id="continueBtn" class="continue-btn">Continue</button>
+      </div>
+    </div>
+
+    <div id="chooseMap" class="chooseMap-screen">
+      <h1 id="chooseMapTxt">Choose your location</h1>
+      <div class="map-container">
+
+        <div id="firstMap" class="choose-map" data-name="Pezinok" data-src="empty">
+          <div class="myMap fade">
+            <div class="map-caption">Pezinok</div>
+            <img src="../Art/Gemini_Generated_Image_qg1ynmqg1ynmqg1y.png" alt="pezinok" />
+          </div>
+        </div>
+
+        <div id="secondMap" class="choose-map" data-name="Viničné" data-src="empty">
+          <div class="myMap fade">
+            <div class="map-caption">Viničné</div>
+            <img src="" alt="Viničné" />
+          </div>
+        </div>
+
+        <div id="thirdMap" class="choose-map" data-name="Vinosady" data-src="empty">
+          <div class="myMap fade">
+            <div class="map-caption">Vinosady</div>
+            <img src="" alt="Vinosady" />
+          </div>
+        </div>
+
+        <div id="fourthMap" class="choose-map" data-name="Bratislava" data-src="empty">
+          <div class="myMap fade">
+            <div class="map-caption">Bratislava</div>
+            <img src="" alt="Bratislava" />
+          </div>
+        </div>
+        <br />
+
+        <a class="prev" onclick="plusSlides2(-1)">❮</a>
+        <a class="next" onclick="plusSlides2(1)">❯</a>
+
+        <div style="text-align: center">
+          <span class="dot dot-map" onclick="currentSlide2(1)"></span>
+          <span class="dot dot-map" onclick="currentSlide2(2)"></span>
+          <span class="dot dot-map" onclick="currentSlide2(3)"></span>
+          <span class="dot dot-map" onclick="currentSlide2(4)"></span>
+        </div>
+      </div>
+
+      <div class="ctnu">
+        <button id="backBtn" class="continue-btn">back</button>
+
+        <button id="continueBtn2" class="continue-btn">Continue</button>
+      </div>
+    </div>
+
+    <div id="gameIndex" class="game-index">
+          <canvas id="gameCanvas" class="gameCanvas"></canvas>
 
     </div>
-    <div class="start-screen">
-
-    </div>
-    <div class="gameOver-screen">
-
-    </div>
+    <div class="gameOver-screen"></div>
     <script src="game.js"></script>
-</body>
+  </body>
 </html>

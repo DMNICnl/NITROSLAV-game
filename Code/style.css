@@ -1,9 +1,192 @@
+
+/* 
+.pixelify-sans-<uniquifier> {
+  font-family: "Pixelify Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+ */
+ /* for black use #272736ff */
+
 *{
     margin: 0;
     padding: 0;
+  font-family: "Pixelify Sans", sans-serif;
+
+}
+/* score display */
+.score-display {
+    display: none;
+}
+/* start screen css */
+.startBG{
+    position: fixed;
+    height: 105%;
+    z-index: -100;
+    width: 105%;
+     background-image: url("../Art/bratislavaBG1.png");
+    background-color: #272736ff;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-position: center;
+    background-blend-mode:overlay;
+}
+.startBG.blur {
+  filter: blur(9px);
+}
+
+.start-screen{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+    
+}
+.nitroslavLogo{
+    height: 800px;
+
+}
+.nitroslavLoop{
+  margin-top: 22px;
+  display: none;
+  position: absolute;
+}
+.start-screen button{
+    cursor: pointer;
+    font-size: 40px;
+    margin-top:-100px;
+    z-index: 100;
+    font-weight: 700;
+    padding: 15px;
+   background-color: transparent;
+   border: none;
+   color: white;
+    
+}
+#nitroslavLogo,
+.start-screen button{
+  display:block;          /* keep space reserved */
+  opacity:0;              /* start hidden */
+  visibility:hidden;      /* not focusable/clickable */
+  transition:opacity .4s ease;
+}
+
+.show {
+  opacity:1;
+  visibility:visible;
+}
+
+/* css for car character choose slider */
+.chooseBG{
+  display: none;
+      position: fixed;
+    height: 105%;
+    z-index: -100;
+    width: 105%;
+     background-image: url("../Art/bratislavaBG2.png");
+    background-color: #272736ff;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-position: center;
+    background-blend-mode:overlay;
+}
+
+#chooseScreen, #chooseMap{
+    display: none;
+}
+#chooseCarTxt, #chooseMapTxt{
+    font-size: 50px;
+    text-align: center;
+color: white;
+    padding: 40px;
+}
+.choose-character, .choose-map {
+    display: none;
+    
+}
+.character-container, .map-container{
+    width: 1000px;
+    height: 375px;
+    position: relative;
+    margin: auto;
+}
+.myChar, .myMap{
+    text-align: center;
+    
+}
+.myChar img, .myMap img{
+    margin-top: 20px;
+    max-height: 250px;
+    
+}
+.prev, .next{
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 38px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+.next{
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+  font-size: 45px;
+}
+.char-caption, .map-caption {
+  color: white;
+  font-size: 35px;
+  padding: 8px 12px;
+  width: 100%;
+  text-align: center;
+}
+.dot {
+  cursor: pointer;
+  height: 15px;
+    position: relative;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  bottom: 8px;
+  
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+  background-color: #717171;
+}
+.ctnu{
+    padding: 20px;
+    text-align: center;
+}
+.continue-btn{
+   cursor: pointer;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 15px;
+   background-color: transparent;
+   border: none;
+   color: white;
+    
+}
+/* choose your map css */
+/* game index css */
+.game-index{
+  display: none;
 }
 .gameCanvas{
+ background-color: blue;
+ height: 400px;
     image-rendering: pixelated;
-    border: 1px solid black;    
-    background-color: red;
 }
