@@ -1,5 +1,5 @@
 const canvas = document.querySelector("canvas");
-  let slides = document.getElementsByClassName("choose-character");
+let slides = document.getElementsByClassName("choose-character");
 
 
 canvas.width = window.innerWidth;
@@ -45,7 +45,7 @@ nitroLogo.addEventListener("ended", () => {
 
 
 // start screen car character choosing code
-// First slider
+// First slider for selecting cars
 let slideIndex = 1;
 showSlides(slideIndex);
 
@@ -94,7 +94,7 @@ let selectedcarSrc = active.dataset.src;
   sessionStorage.setItem("choosenCarPath", selectedcarSrc);
 }
 
-// Second slider
+// Second slider for maps
 let slideIndex2 = 1;
 showSlides2(slideIndex2);   
 
@@ -122,6 +122,7 @@ function showSlides2(n) {
   slides[slideIndex2-1].style.display = "block";
   dots[slideIndex2-1].className += " active";
 }
+// code for selecting and storing chosen car and map
 
 // code for switching images the animation
 
@@ -165,3 +166,4 @@ function changeSeat(){
     seatElement.src = seat[currentState04];
 }
 setInterval(changeSeat, 300);
+

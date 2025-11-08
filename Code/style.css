@@ -190,3 +190,9 @@ color: white;
  height: 400px;
     image-rendering: pixelated;
 }
+/* continue to make phone rotated for playing on phone */
+@media screen and (max-width: 769px) {
+  body{
+    rotate: 90deg;
+  }
+}
