@@ -1,5 +1,6 @@
 const canvas = document.querySelector("canvas");
 let slides = document.getElementsByClassName("choose-character");
+let slides2 = document.getElementsByClassName("choose-map")
 
 
 canvas.width = window.innerWidth;
@@ -77,23 +78,6 @@ function showSlides(n) {
   dots[slideIndex-1].className += " active";
 }
 
-let characters = ["../Art/bmwe30_1.PNG", "../Art/merc_1.PNG", "../Art/micro_1.PNG", "../Art/seat_1.PNG"];
-let totalCharNumber = characters.length - 1;
-let chosenCharNumber = 0;
-
-let continueBtn = document.getElementById("continueBtn");
-continueBtn.addEventListener("click", handleContinue);
-
-
-function handleContinue(){
-
-  const active = slides[slideIndex - 1];
-let selectedCarIndex = active.dataset.name;
-let selectedcarSrc = active.dataset.src;
-  sessionStorage.setItem("choosenCar", selectedCarIndex);
-  sessionStorage.setItem("choosenCarPath", selectedcarSrc);
-}
-
 // Second slider for maps
 let slideIndex2 = 1;
 showSlides2(slideIndex2);   
@@ -108,22 +92,62 @@ function currentSlide2(n) {
 
 function showSlides2(n) {
   let i;
-  let slides = document.getElementsByClassName("choose-map");
+  let slides2 = document.getElementsByClassName("choose-map");
   let dots = document.getElementsByClassName("dot-map");
-  if (!slides.length) return;
- if (n > slides.length) { slideIndex2 = 1 }
-  if (n < 1) { slideIndex2 = slides.length }
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+  if (!slides2.length) return;
+ if (n > slides2.length) { slideIndex2 = 1 }
+  if (n < 1) { slideIndex2 = slides2.length }
+  for (i = 0; i < slides2.length; i++) {
+    slides2[i].style.display = "none";
   }
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace("active", "");
   }
-  slides[slideIndex2-1].style.display = "block";
+  slides2[slideIndex2-1].style.display = "block";
   dots[slideIndex2-1].className += " active";
 }
 // code for selecting and storing chosen car and map
 
+// characters
+let characters = ["../Art/bmwe30_1.PNG", "../Art/merc_1.PNG", "../Art/micro_1.PNG", "../Art/seat_1.PNG"];
+let totalCharNumber = characters.length - 1;
+let chosenCharNumber = 0;
+
+let continueBtn = document.getElementById("continueBtn");
+continueBtn.addEventListener("click", handleContinue);
+// maps
+let maps = ["../Art/Gemini_Generated_Image_qg1ynmqg1ynmqg1y.png","hele coole","","",]
+let totalMapNumber = maps.length -1;
+let chosenMapNumber = 0;
+
+let continueBtn2 = document.querySelector("#continueBtn2");
+continueBtn2.addEventListener("click", handleContinueToGame)
+
+
+function handleContinue(){
+// for the cars
+  const active = slides[slideIndex - 1];
+  let selectedCarIndex = active.dataset.name;
+  let selectedcarSrc = active.dataset.src;
+  sessionStorage.setItem("choosenCar", selectedCarIndex);
+  sessionStorage.setItem("choosenCarPath", selectedcarSrc);
+ 
+  console.log("this is the car " + sessionStorage.getItem("choosenCar"));
+  console.log("this is the car path" + sessionStorage.getItem("choosenCarPath"));
+  
+  
+}
+function handleContinueToGame(){
+  // for the maps
+  const active2 = slides2[slideIndex2 -1];
+  let selectedMapIndex = active2.dataset.name;
+  let selectedMapSrc = active2.dataset.src;
+
+   sessionStorage.setItem("choosenMap", selectedMapIndex);
+  sessionStorage.setItem("choosenMapPath", selectedMapSrc);
+  console.log("this is the map " + sessionStorage.getItem("choosenMap"));
+  console.log("this is also the map path" + sessionStorage.getItem("choosenMapPath"));
+}
 // code for switching images the animation
 
 const bmw = ["../Art/bmwe30_1.PNG", "../Art/bmwe30_2.PNG"];
