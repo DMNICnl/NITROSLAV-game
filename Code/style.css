@@ -190,6 +190,8 @@ color: white;
 /* game index css */
 .game-index{
   display: none;
+  width: 100vw;
+  height: 100vh;
   /* ! set to none */
 }
 .gameCanvas{
