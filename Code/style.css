@@ -15,6 +15,12 @@
   font-family: "Pixelify Sans", sans-serif;
 
 }
+body{
+  overflow: hidden;
+}
+[hidden]{
+  display: none !important;
+}
 /* score display */
 .score-display {
     display: none;
@@ -184,10 +190,11 @@ color: white;
 /* game index css */
 .game-index{
   display: none;
+  /* ! set to none */
 }
 .gameCanvas{
  background-color: blue;
- height: 400px;
+ justify-self: center;
     image-rendering: pixelated;
 }
 /* continue to make phone rotated for playing on phone */

@@ -8,7 +8,17 @@ canvas.height = window.innerHeight;
 
 const ctx = canvas.getContext("2d");
 
-ctx.fillRect(0, 600, 500, 300);
+function initGame(){
+let img = new Image();
+img.src =  sessionStorage.getItem("choosenCarPath");
+img.onload = function() {
+  ctx.imageSmoothingEnabled = false; 
+  ctx.drawImage(img, 300, 600, );
+  console.log(ctx);
+  
+};
+}
+
 
 document.addEventListener("keydown", event => {
     console.log(event);
@@ -41,8 +51,7 @@ nitroLogo.addEventListener("ended", () => {
     console.log("loop ended");
     nitroLoop.style.display = "block";
 });
-// Code for moving background img on ncharacter choosing page
-// shit code for selecting not working anyway but just in case ynk
+// Code for moving background img and character choosing page on the canvas
 
 
 // start screen car character choosing code
@@ -121,11 +130,11 @@ let totalMapNumber = maps.length -1;
 let chosenMapNumber = 0;
 
 let continueBtn2 = document.querySelector("#continueBtn2");
-continueBtn2.addEventListener("click", handleContinueToGame)
-
+continueBtn2.addEventListener("click", handleContinueToGame);
 
 function handleContinue(){
-// for the cars
+  // for the cars
+  
   const active = slides[slideIndex - 1];
   let selectedCarIndex = active.dataset.name;
   let selectedcarSrc = active.dataset.src;
@@ -152,7 +161,7 @@ function handleContinueToGame(){
 
 const bmw = ["../Art/bmwe30_1.PNG", "../Art/bmwe30_2.PNG"];
 
-const bmwElement = document.getElementById("bmw");
+const bmwElement =  sessionStorage.getItem("choosenCarPath");
 let currentState = 0;
 
 function changeBmw(){

@@ -7,6 +7,8 @@ function hideAll(){
 }
 
 $(document).ready(function (){
+    // ! change to startscreen 
+// $("#gameIndex").show();
 $("#startScreen").show();
     $("#nitroslavLogo").css({"visibility": "visible", "opacity": "1"}).delay(1000);
     $("#startBtn").css("visibility","visible").fadeTo(700, 1);
@@ -30,6 +32,7 @@ $("#startScreen").show();
      $("#continueBtn2").click(function(){
         hideAll();
         $("#gameIndex").show();
+        initGame();
     });
 });
 
