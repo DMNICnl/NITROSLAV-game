@@ -75,7 +75,7 @@ transform: translate(-4px, 4px);
 #menuIcon{
   position: absolute;
   transform: translate(-20px, 10px);
-  
+  z-index: 2000;
   height: 74px;
   padding: 10px;
   filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));

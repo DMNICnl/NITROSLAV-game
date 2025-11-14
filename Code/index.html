@@ -28,39 +28,67 @@
   <body>
     <script src="pages.js" defer></script>
     <script src="game.js" defer></script>
+    <!-- game music -->
 
+    <audio id="playBgMusic"></audio>
     <img src="../icons/menu.PNG" alt="" id="menuIcon" />
- <div class="gameMenu">
-  <nav class="menuBar">
-    <ul>
-      <li class="menuItems" id="menuItem1">Audio</li>
-      <li class="menuItems" id="menuItem2">Gameplay</li>
-      <li class="menuItems" id="menuItem3">System</li>
-    </ul>
-  </nav>
-  <div class="audioSettings">
-    <div class="masterSlider">
-      <p>Master volume:</p>
-      <input type="range" min="0" max="100" value="1" id="myRange1" class="slider">
-    </div>
-    <p class="valueClass">Value: <span class="valueOfMusic" id="value"></span></p>
-    <div class="masterSlider">
-      <p>Music volume:</p>
-      <input type="range" min="0" max="100" value="1" id="myRange2" class="slider">
-    </div>
-    <p class="valueClass">Value: <span class="valueOfMusic" id="value"></span></p>
-    <div class="masterSlider">
-      <p>SFX volume:</p>
-      <input type="range" min="0" max="100" value="1" id="myRange3" class="slider">
-    </div>
-    <p class="valueClass">Value: <span class="valueOfMusic" id="value"></span></p>
-
-  </div>
-        <div class="menu-btns">
-          <img src="../icons/resume.PNG" alt="" id="pause" />
-          <img src="../icons/quit.PNG" alt="" id="quit" />
+    <div class="gameMenu">
+      <nav class="menuBar">
+        <ul>
+          <li class="menuItems" id="menuItem1">Audio</li>
+          <li class="menuItems" id="menuItem2">Gameplay</li>
+          <li class="menuItems" id="menuItem3">System</li>
+        </ul>
+      </nav>
+      <div class="audioSettings" id="audioSettings">
+        <div class="masterSlider">
+          <p>Master volume:</p>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="60"
+            id="myRange1"
+            class="slider"
+          />
         </div>
+        <p class="valueClass">
+          Value: <span class="valueOfMusic" id="value"></span>
+        </p>
+        <div class="masterSlider">
+          <p>Music volume:</p>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="60"
+            id="myRange2"
+            class="slider"
+          />
+        </div>
+        <p class="valueClass">
+          Value: <span class="valueOfMusic" id="value"></span>
+        </p>
+        <div class="masterSlider">
+          <p>SFX volume:</p>
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="60"
+            id="myRange3"
+            class="slider"
+          />
+        </div>
+        <p class="valueClass">
+          Value: <span class="valueOfMusic" id="value"></span>
+        </p>
       </div>
+      <div class="menu-btns">
+        <img src="../icons/resume.PNG" alt="" id="pause" />
+        <img src="../icons/quit.PNG" alt="" id="quit" />
+      </div>
+    </div>
 
     <div class="score-display">
       <h2 id="score">Score: 0</h2>
@@ -288,7 +316,7 @@
     <!-- the game page -->
     <div id="gameIndex" class="game-index">
       <canvas id="gameCanvas" class="gameCanvas"></canvas>
-     
+
       <div class="hud">
         <div class="inlineBtns">
           <img src="../icons/nos.PNG" alt="" id="nos" notClickable />

@@ -328,4 +328,20 @@ musicSlider.forEach(sl =>{
     sl.style.background = color
   })
 })
+//TODO script for bg music playing
+//TODO let playBgMusic = document.querySelector("#playBgMusic");
+//TODO const playlist = [
+//TODO   "../Audio/Atlantis   Outland 2025 remaster.mp3",
+//TODO   "../Audio/Trango.mp3"
+//TODO ];
 
+//TODO let musicIndex = 0;
+//TODO function playNext(){
+//TODO   playBgMusic.src = playlist[musicIndex];
+//TODO   playBgMusic.play();
+//TODO }
+//TODO playBgMusic.addEventListener("ended", () =>{
+//TODO   musicIndex = (musicIndex +1) % playlist.length;
+//TODO   playNext();
+//TODO });
+//TODO playNext();

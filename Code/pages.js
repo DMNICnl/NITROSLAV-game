@@ -34,6 +34,7 @@ $("#startScreen").show();
         $("#gameIndex").show();
         initGame();
     });
+    // script for menu
     $("#quit").click(function(){
         hideAll();
         $("#chooseScreen").show();
