@@ -273,3 +273,59 @@ function handleContinueToGame() {
   );
 }
 // script for hub buttons
+const arrowUpBtn = document.querySelector("#arrowUp");
+const nosBtn = document.querySelector("#nos");
+const menuIconBtn = document.querySelector("#menuIcon");
+const pauseBtnInMenu = document.querySelector("#pause");
+const quitBtnInMenu = document.querySelector("#quit");
+
+// let menuItem1 = document.querySelector("#menuItem1")
+// let menuItem2 = document.querySelector("#menuItem2")
+// let menuItem3 = document.querySelector("#menuItem3")
+let mmenuItems = document.querySelectorAll(".menuItems");
+
+const gameMenu = document.querySelector(".gameMenu");
+// display the menu itself
+menuIconBtn.addEventListener("click", () => {
+  gameMenu.style.display = "block";
+  menuItem1.classList.add("menuBarClicked");
+});
+pauseBtnInMenu.addEventListener("click", () => {
+  gameMenu.style.display = "none";
+});
+// clicked attribute for selected menu bar item
+// menuItem1.addEventListener("click", () => {
+//   menuItem1.classList.add("menuBarClicked")
+// });
+// menuItem1.addEventListener("click", () => {
+//   menuItem1.classList.add("menuBarClicked")
+// });
+// menuItem1.addEventListener("click", () => {
+//   menuItem1.classList.add("menuBarClicked")
+// });
+mmenuItems.forEach(btn => {
+  btn.addEventListener("click", () =>{
+mmenuItems.forEach(b => b.classList.remove("menuBarClicked"))
+    btn.classList.add("menuBarClicked");
+  })
+
+})
+// script for the music sliders
+let musicSlider = document.querySelectorAll(".slider");
+let musicValue = document.querySelectorAll(".valueOfMusic");
+
+musicSlider.forEach((slider, index)=>{
+  musicValue[index].innerHTML = slider.value;
+  slider.addEventListener("input", () => {
+    musicValue[index].innerHTML = slider.value;
+
+  })
+})
+musicSlider.forEach(sl =>{
+  sl.addEventListener("input", () =>{
+    let x = sl.value;
+    let color = 'linear-gradient(90deg, rgb(229, 118, 50)'+ x + '%, var(--shadow-hud-buttons)'+ x + '%)';
+    sl.style.background = color
+  })
+})
+

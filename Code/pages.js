@@ -28,11 +28,15 @@ $("#startScreen").show();
         hideAll();
         $("#chooseScreen").show();
     });
-
-     $("#continueBtn2").click(function(){
+    
+    $("#continueBtn2").click(function(){
         hideAll();
         $("#gameIndex").show();
         initGame();
+    });
+    $("#quit").click(function(){
+        hideAll();
+        $("#chooseScreen").show();
     });
 });
 

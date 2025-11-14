@@ -20,17 +20,127 @@ body{
 }
 :root{
   --shadow-hud-buttons:#568fb5;
+  --menu-select-bar-bg:#14589b;
+  --font-color:aliceblue;
+  --orange-color:#e57632ff;
 }
 /* attributes */
 [hidden]{
   display: none !important;
 }
-.notClickable{
+[notClickable]{
   opacity: 0.5;
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons) )!important;
+transform: translate(-4px, 4px);
+}
+.menuBarClicked{
+  background-color: var(--menu-select-bar-bg);
 }
 /* score display */
 .score-display {
     display: none;
+}
+/* css for menu */
+.gameMenu{
+  display: none;
+  position: absolute;
+  background-image: url(../Art/menu.PNG);
+  height: 880px;
+  margin-top: 30px;
+  justify-self: center;
+  text-align: center;
+  color: var(--font-color);
+  width: 480px;
+    background-repeat: no-repeat;
+    background-size: cover;
+      background-position: center;
+      z-index: 2000;
+}
+.menu-btns{
+  position: absolute;
+  bottom: 0;
+  justify-self: center;
+}
+.gameMenu img{
+  height: 64px;
+  padding: 10px;
+  margin-bottom: 30px;
+   filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+  cursor: pointer;
+}
+.gameMenu img:active{
+   filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+transform: translate(-4px, 4px);
+}
+#menuIcon{
+  position: absolute;
+  transform: translate(-20px, 10px);
+  
+  height: 74px;
+  padding: 10px;
+  filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+  cursor: pointer;
+  right: 0;
+}
+.menuBar ul{
+  display: flex;
+  justify-self: center;
+  margin: 10px;
+}
+.menuBar ul li{
+  list-style: none;
+  color: var(--font-color);
+  cursor: pointer;
+  font-size: 24px;
+  padding: 15px;
+}
+.masterSlider{
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  margin: 30px;
+  gap: 20px;
+  
+}
+.slider{
+  -webkit-appearance: none;
+  width: 50%;
+  height: 20px;
+  background: linear-gradient(90deg, rgb(229, 118, 50) 60%, var(--shadow-hud-buttons) 60%);
+  outline: none;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  -webkit-transition: 0.2s;
+  border-radius: 12px;
+}
+.slider:hover{
+opacity: 1;
+}
+.slider::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.valueClass{
+  margin-left: 40px;
+}
+.slider::after{
+  content: "100";
+  color: var(--font-color);
+  position: absolute;
+  margin-top: 30px;
+  right: 0;
+  margin-right: 30px;
+}
+.slider::before{
+    content: "0";
+  color: var(--font-color);
+  position: absolute;
+  margin-top: 30px;
 }
 /* start screen css */
 .startBG{
@@ -76,7 +186,7 @@ body{
     padding: 15px;
    background-color: transparent;
    border: none;
-   color: white;
+   color: var(--font-color);
     
 }
 #nitroslavLogo,
@@ -113,7 +223,7 @@ body{
 #chooseCarTxt, #chooseMapTxt{
     font-size: 50px;
     text-align: center;
-color: white;
+color: var(--font-color);
     padding: 40px;
 }
 .choose-character, .choose-map {
@@ -142,7 +252,7 @@ color: white;
   width: auto;
   padding: 16px;
   margin-top: -22px;
-  color: white;
+  color: var(--font-color);
   font-weight: bold;
   font-size: 38px;
   transition: 0.6s ease;
@@ -157,7 +267,7 @@ color: white;
   font-size: 45px;
 }
 .char-caption, .map-caption {
-  color: white;
+  color: var(--font-color);
   font-size: 35px;
   padding: 8px 12px;
   width: 100%;
@@ -190,8 +300,19 @@ color: white;
     padding: 15px;
    background-color: transparent;
    border: none;
-   color: white;
+   color: var(--font-color);
     
+}
+.carInfo{
+  position: absolute;
+  transform: translate(0px, 150px);
+  color: var(--font-color);
+  background-color: #006abc30;
+  padding: 20px;
+}
+.carInfo p{
+  padding: 5px;
+  font-size: 23px;
 }
 /* choose your map css */
 /* game index css */
@@ -226,25 +347,24 @@ flex-direction: row
   cursor: pointer;
   padding: 10px;
 }
+#nos{
+  height: 74px;
+  filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+  cursor: pointer;
+  padding: 10px;
+}
+
 #arrowUp:active{
     filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
 transform: translate(-4px, 4px);
 }
-#nos{
-   height: 74px;
-    filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
-cursor: pointer;
-padding: 10px;
+#nos:active{
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+transform: translate(-4px, 4px);
 }
-#menuIcon{
-  position: absolute;
-  transform: translate(-20px, 10px);
-
-  height: 74px;
-  padding: 10px;
-    filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
-cursor: pointer;
-right: 0;
+#menuIcon:active{
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+transform: translate(-24px, 13px);
 }
 /* continue to make phone rotated for playing on phone */
 @media screen and (max-width: 769px) {
