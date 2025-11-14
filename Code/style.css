@@ -18,8 +18,15 @@
 body{
   overflow: hidden;
 }
+:root{
+  --shadow-hud-buttons:#568fb5;
+}
+/* attributes */
 [hidden]{
   display: none !important;
+}
+.notClickable{
+  opacity: 0.5;
 }
 /* score display */
 .score-display {
@@ -196,8 +203,48 @@ color: white;
 }
 .gameCanvas{
  background-color: blue;
+ position: absolute;
  justify-self: center;
     image-rendering: pixelated;
+}
+.hud{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.inlineBtns{
+   position: absolute;
+display: flex;
+right: 0;
+bottom: 0;
+transform: translate(-60px, -50px);
+flex-direction: row
+}
+#arrowUp{
+  width: 74px;
+  filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+  cursor: pointer;
+  padding: 10px;
+}
+#arrowUp:active{
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+transform: translate(-4px, 4px);
+}
+#nos{
+   height: 74px;
+    filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+cursor: pointer;
+padding: 10px;
+}
+#menuIcon{
+  position: absolute;
+  transform: translate(-20px, 10px);
+
+  height: 74px;
+  padding: 10px;
+    filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+cursor: pointer;
+right: 0;
 }
 /* continue to make phone rotated for playing on phone */
 @media screen and (max-width: 769px) {

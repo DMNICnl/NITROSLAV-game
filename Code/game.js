@@ -33,11 +33,11 @@ function initGame() {
 
   const BAlayerFiles = [
     "../bratislava/demobratislavamap/BAsky.png", //0
-    "../bratislava/demobratislavamap/BAnatureNcastle.png", // 1
-    "../bratislava/demobratislavamap/BAhouses.png", //2
-    "../bratislava/demobratislavamap/BAlampposts.png", //3
+    "../bratislava/demobratislavamap/BAnature3.png", // 1
+    "../bratislava/demobratislavamap/BAhouses4.png", //2
+    "../bratislava/demobratislavamap/BAlanterns.png", //3
     "../bratislava/demobratislavamap/BAroad.png", //4
-    "../bratislava/demobratislavamap/BAclouds.png", //5
+    "../bratislava/demobratislavamap/BAclouds2.png", //5
     "../bratislava/demobratislavamap/BADayFilter.png", //6
   ];
   const layers = [];
@@ -76,15 +76,15 @@ let lastTime = performance.now();
 function loopLayer(layerImg, xPos, speed, deltaTime){
   xPos -= speed * (deltaTime / 1000);
   if(xPos <= -canvas.width){
-    xPos += canvas.width;
+    xPos = 0;
   }
-  ctx.drawImage(layerImg, xPos, 0, canvas.width, canvas.height);
+  ctx.drawImage(layerImg, xPos, 0, canvas.width +0.7, canvas.height);
   ctx.drawImage(layerImg, xPos + canvas.width, 0, canvas.width, canvas.height);
 
   return xPos;
 }
   function drawFrame(timestamp){
-    const deltaTime = timestamp - lastTime;
+    const deltaTime = Math.min(timestamp - lastTime, 50);
     lastTime = timestamp;
     ctx.clearRect(0,0, canvas.width, canvas.height);
 
@@ -99,10 +99,11 @@ function loopLayer(layerImg, xPos, speed, deltaTime){
     drawCar();
     requestAnimationFrame(drawFrame);
   }
-  setInterval(() => {
-    frameIndex = (frameIndex + 1) % carFrames.length;
-    carImg.src = carFrames[frameIndex];
-  }, 300);
+  // drawFrame();
+  // setInterval(() => {
+  //   frameIndex = (frameIndex + 1) % carFrames.length;
+  //   carImg.src = carFrames[frameIndex];
+  // }, 300);
   
   carImg.onload = () =>   requestAnimationFrame(drawFrame);
 
@@ -271,3 +272,4 @@ function handleContinueToGame() {
     "this is also the map path" + sessionStorage.getItem("choosenMapPath")
   );
 }
+// script for hub buttons
