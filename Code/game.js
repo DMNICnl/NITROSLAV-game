@@ -29,7 +29,6 @@ function initGame() {
   const carImg = new Image();
   carImg.src = carFrames[0];
 
-
   const BAlayerFiles = [
     "../bratislava/demobratislavamap/BAsky.png", //0
     "../bratislava/demobratislavamap/BAnature3.png", // 1
@@ -42,8 +41,6 @@ function initGame() {
   const layers = [];
   let loaded = 0;
 
-  
-  
   for (let file of BAlayerFiles) {
     const img = new Image();
     img.src = file;
@@ -59,42 +56,47 @@ function initGame() {
   function drawAll() {
     layers.forEach((img) => ctx.drawImage(img, 0, 0));
   }
-  
+
   function drawCar() {
     ctx.drawImage(carImg, 300, 600);
   }
-let roadX = 0;
-let housesX = 0;
-let cloudsX = 0;
-let natureX = 0;
-let lammpostX = 0;
+  let roadX = 0;
+  let housesX = 0;
+  let cloudsX = 0;
+  let natureX = 0;
+  let lammpostX = 0;
 
-let scrollSpeed = 200;
-let lastTime = performance.now();
+  let scrollSpeed = 200;
+  let lastTime = performance.now();
 
-function loopLayer(layerImg, xPos, speed, deltaTime){
-  xPos -= speed * (deltaTime / 1000);
-  if(xPos <= -canvas.width){
-    xPos = 0;
+  function loopLayer(layerImg, xPos, speed, deltaTime) {
+    xPos -= speed * (deltaTime / 1000);
+    if (xPos <= -canvas.width) {
+      xPos = 0;
+    }
+    ctx.drawImage(layerImg, xPos, 0, canvas.width + 0.7, canvas.height);
+    ctx.drawImage(
+      layerImg,
+      xPos + canvas.width,
+      0,
+      canvas.width,
+      canvas.height,
+    );
+
+    return xPos;
   }
-  ctx.drawImage(layerImg, xPos, 0, canvas.width +0.7, canvas.height);
-  ctx.drawImage(layerImg, xPos + canvas.width, 0, canvas.width, canvas.height);
-
-  return xPos;
-}
-  function drawFrame(timestamp){
+  function drawFrame(timestamp) {
     const deltaTime = Math.min(timestamp - lastTime, 50);
     lastTime = timestamp;
-    ctx.clearRect(0,0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
-    ctx.drawImage(layers[0], 0,0, canvas.width, canvas.height)
+    ctx.drawImage(layers[0], 0, 0, canvas.width, canvas.height);
     natureX = loopLayer(layers[1], natureX, scrollSpeed * 0.5, deltaTime);
     housesX = loopLayer(layers[2], housesX, scrollSpeed * 0.75, deltaTime);
-    lammpostX = loopLayer(layers[3],lammpostX, scrollSpeed *1.3 , deltaTime)
+    lammpostX = loopLayer(layers[3], lammpostX, scrollSpeed * 1.3, deltaTime);
     roadX = loopLayer(layers[4], roadX, scrollSpeed * 1.5, deltaTime);
     cloudsX = loopLayer(layers[5], cloudsX, scrollSpeed * 0.25, deltaTime);
-    ctx.drawImage(layers[6], 0,0, canvas.width, canvas.height)
+    ctx.drawImage(layers[6], 0, 0, canvas.width, canvas.height);
     drawCar();
     requestAnimationFrame(drawFrame);
   }
@@ -103,9 +105,8 @@ function loopLayer(layerImg, xPos, speed, deltaTime){
   //   frameIndex = (frameIndex + 1) % carFrames.length;
   //   carImg.src = carFrames[frameIndex];
   // }, 300);
-  
-  carImg.onload = () =>   requestAnimationFrame(drawFrame);
 
+  carImg.onload = () => requestAnimationFrame(drawFrame);
 }
 
 // animation frames for all cars
@@ -179,8 +180,8 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   const active = slides[slideIndex - 1];
 
-  console.log("current car: "+ active.dataset.name);
-  console.log("current car source: "+ active.dataset.src);
+  console.log("current car: " + active.dataset.name);
+  console.log("current car source: " + active.dataset.src);
 
   dots[slideIndex - 1].className += " active";
 }
@@ -255,7 +256,7 @@ function handleContinue() {
 
   console.log("this is the car " + sessionStorage.getItem("choosenCar"));
   console.log(
-    "this is the car path" + sessionStorage.getItem("choosenCarPath")
+    "this is the car path" + sessionStorage.getItem("choosenCarPath"),
   );
 }
 function handleContinueToGame() {
@@ -268,7 +269,7 @@ function handleContinueToGame() {
   sessionStorage.setItem("choosenMapPath", selectedMapSrc);
   console.log("this is the map " + sessionStorage.getItem("choosenMap"));
   console.log(
-    "this is also the map path" + sessionStorage.getItem("choosenMapPath")
+    "this is also the map path" + sessionStorage.getItem("choosenMapPath"),
   );
 }
 // script for hub buttons
@@ -281,7 +282,7 @@ const quitBtnInMenu = document.querySelector("#quit");
 const cancelBtnInMenu = document.querySelector("#cancel");
 const inGameBtnsMenu = document.querySelector("#inGameBtnsMenu");
 const outGameBtnsMenu = document.querySelector("#outGameBtnsMenu");
-let pageIndex = "start";
+
 
 let mmenuItems = document.querySelectorAll(".menuItems");
 let settingIndexes = document.querySelectorAll(".settingIndexes");
@@ -295,48 +296,63 @@ pauseBtnInMenu.addEventListener("click", () => {
   gameMenu.style.display = "none";
 });
 
-mmenuItems.forEach((btn, index) =>{
-  btn.addEventListener("click", ()=>{
-    mmenuItems.forEach(b => b.classList.remove("menuBarClicked"));
+mmenuItems.forEach((btn, index) => {
+  btn.addEventListener("click", () => {
+    mmenuItems.forEach((b) => b.classList.remove("menuBarClicked"));
     btn.classList.add("menuBarClicked");
-    settingIndexes.forEach(i => i.classList.remove("activeIndex"));
-    settingIndexes[index].classList.add("activeIndex")
-  })
-})
+    settingIndexes.forEach((i) => i.classList.remove("activeIndex"));
+    settingIndexes[index].classList.add("activeIndex");
+  });
+});
+
+inGameBtnsMenu.classList.add("notVisible");  
+if (pageIndex === 1 || pageIndex === 2 || pageIndex === 3) {
+  inGameBtnsMenu.classList.remove("notVisible");  
+  inGameBtnsMenu.classList.add("visible");  
+} 
+if(pageIndex === 4){
+  outGameBtnsMenu.classList.remove("visible");  
+  outGameBtnsMenu.classList.add("notVisible");  
+
+}
 mmenuItems[0].classList.add("menuBarClicked");
 settingIndexes[0].classList.add("activeIndex");
 // script for the music sliders in menu
 let musicSlider = document.querySelectorAll(".slider");
 let musicValue = document.querySelectorAll(".valueOfMusic");
 
-musicSlider.forEach((slider, index)=>{
+musicSlider.forEach((slider, index) => {
   musicValue[index].innerHTML = slider.value;
   slider.addEventListener("input", () => {
     musicValue[index].innerHTML = slider.value;
-
-  })
-})
-musicSlider.forEach(sl =>{
-  sl.addEventListener("input", () =>{
+  });
+});
+musicSlider.forEach((sl) => {
+  sl.addEventListener("input", () => {
     let x = sl.value;
-    let color = 'linear-gradient(90deg, rgb(229, 118, 50)'+ x + '%, var(--shadow-hud-buttons)'+ x + '%)';
-    sl.style.background = color
-  })
-})
+    let color =
+      "linear-gradient(90deg, rgb(229, 118, 50)" +
+      x +
+      "%, var(--shadow-hud-buttons)" +
+      x +
+      "%)";
+    sl.style.background = color;
+  });
+});
 // !uncomment for bg music
 //script for bg music playing
 let playBgMusic = document.querySelector("#playBgMusic");
 const playlist = [
-   "../Audio/Atlantis   Outland 2025 remaster.mp3",
-   "../Audio/Trango.mp3"
+  "../Audio/Atlantis   Outland 2025 remaster.mp3",
+  "../Audio/Trango.mp3",
 ];
-  let musicIndex = 0;
-  function playNext(){
- playBgMusic.src = playlist[musicIndex];
- playBgMusic.play();
+let musicIndex = 0;
+function playNext() {
+  playBgMusic.src = playlist[musicIndex];
+  playBgMusic.play();
 }
-playBgMusic.addEventListener("ended", () =>{
- musicIndex = (musicIndex +1) % playlist.length;
- playNext();
+playBgMusic.addEventListener("ended", () => {
+  musicIndex = (musicIndex + 1) % playlist.length;
+  playNext();
 });
 playNext();

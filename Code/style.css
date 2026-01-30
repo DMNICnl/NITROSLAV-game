@@ -1,18 +1,21 @@
 
 /* 
-.pixelify-sans-<uniquifier> {
-  font-family: "Pixelify Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: <weight>;
+.jersey-10-regular {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 100;
   font-style: normal;
 }
+
+
  */
  /* for black use #272736ff */
 
 *{
     margin: 0;
     padding: 0;
-  font-family: "Pixelify Sans", sans-serif;
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 100;
+  letter-spacing: 0.1rem;
 
 }
 body{
@@ -27,6 +30,12 @@ body{
 /* attributes */
 [hidden]{
   display: none !important;
+}
+.notVisible{
+  display: none;
+}
+.visible{
+  display: block;
 }
 [notClickable]{
   opacity: 0.5;
