@@ -276,21 +276,38 @@ function handleContinueToGame() {
 const arrowUpBtn = document.querySelector("#arrowUp");
 const nosBtn = document.querySelector("#nos");
 const menuIconBtn = document.querySelector(".menuIcon");
-const menuIconBtnInGame = document.querySelector("#menuIcon2");
 const pauseBtnInMenu = document.querySelector("#pause");
 const quitBtnInMenu = document.querySelector("#quit");
 const cancelBtnInMenu = document.querySelector("#cancel");
 const inGameBtnsMenu = document.querySelector("#inGameBtnsMenu");
 const outGameBtnsMenu = document.querySelector("#outGameBtnsMenu");
 
-
 let mmenuItems = document.querySelectorAll(".menuItems");
 let settingIndexes = document.querySelectorAll(".settingIndexes");
 
 const gameMenu = document.querySelector(".gameMenu");
 // display the menu itself
+function hideMenuBtns() {
+  inGameBtnsMenu.classList.remove("visible");
+  outGameBtnsMenu.classList.remove("visible");
+
+  inGameBtnsMenu.classList.add("notVisible");
+  outGameBtnsMenu.classList.add("notVisible");
+}
+
+
 menuIconBtn.addEventListener("click", () => {
   gameMenu.style.display = "block";
+  if (pageIndex === 1 || pageIndex === 2 || pageIndex === 3) {
+    hideMenuBtns();
+    outGameBtnsMenu.classList.remove("notVisible");
+    outGameBtnsMenu.classList.add("visible");
+  }
+  if (pageIndex === 4) {
+    hideMenuBtns();
+    inGameBtnsMenu.classList.remove("notVisible");
+    inGameBtnsMenu.classList.add("visible");
+  }
 });
 pauseBtnInMenu.addEventListener("click", () => {
   gameMenu.style.display = "none";
@@ -305,16 +322,6 @@ mmenuItems.forEach((btn, index) => {
   });
 });
 
-inGameBtnsMenu.classList.add("notVisible");  
-if (pageIndex === 1 || pageIndex === 2 || pageIndex === 3) {
-  inGameBtnsMenu.classList.remove("notVisible");  
-  inGameBtnsMenu.classList.add("visible");  
-} 
-if(pageIndex === 4){
-  outGameBtnsMenu.classList.remove("visible");  
-  outGameBtnsMenu.classList.add("notVisible");  
-
-}
 mmenuItems[0].classList.add("menuBarClicked");
 settingIndexes[0].classList.add("activeIndex");
 // script for the music sliders in menu
