@@ -18,14 +18,15 @@
   letter-spacing: 0.1rem;
 
 }
-body{
-  overflow: hidden;
-}
 :root{
   --shadow-hud-buttons:#568fb5;
   --menu-select-bar-bg:#14589b;
   --font-color:aliceblue;
   --orange-color:#e57632ff;
+}
+body{
+  overflow: hidden;
+  color: var(--font-color);
 }
 /* attributes */
 [hidden]{
@@ -37,11 +38,8 @@ body{
 .visible{
   display: block;
 }
-.notOpacitied{
-  opacity: 0;
-}
-.positiveOpacitied{
-  opacity: 1;
+.noPointers{
+  pointer-events: none !important;
 }
 [notClickable]{
   opacity: 0.5;
@@ -57,15 +55,46 @@ transform: translate(-4px, 4px);
 }
 /* css for menu */
 
+
 .sureToQuit{
   width: 600px;
-  height: 300px;
-  background-color: red;
-  display: flex;
+  height: 350px;
+  display: none;
+  background-color: transparent;
   justify-self: center;
+    background-image: url(../Art/USurebg.PNG);
+  background-repeat: no-repeat;
+    background-size: contain;
+      background-position: center;
   position: absolute;
   margin-top: 300px;
+  font-size: 40px;
   z-index: 2001;
+  
+  
+}
+.sureToQuit-items{
+align-items: center;
+justify-self: center;
+  flex-direction: column;
+  margin-top: 100px;
+
+}
+.popup-btns{
+display: flex;
+gap: 30px;
+justify-self: center;
+}
+.popup-btns img{
+  height: 70px;
+  cursor: pointer;
+  margin-top: 50px;
+     filter: drop-shadow(-7px 4px 0px var(--shadow-hud-buttons));
+
+}
+.popup-btns img:active{
+   filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+transform: translate(-4px, 4px);
 }
 .gameMenu{
   display: none;

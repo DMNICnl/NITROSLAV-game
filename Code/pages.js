@@ -3,9 +3,16 @@ function hideAll() {
   $("#chooseScreen").hide();
   $("#chooseMap").hide();
   $("#gameIndex").hide();
+  $("#sureToQuit").hide();
 }
 
-let pageIndex ;
+let pageIndex;
+let popupVisible;
+function updatePointerState() {
+  $("#gameIndex, #gameMenu").toggleClass("noPointers", popupVisible);
+}
+
+
 $(document).ready(function () {
   // ! change to startscreen
   // $("#gameIndex").show();
@@ -13,14 +20,14 @@ $(document).ready(function () {
   pageIndex = 1;
   $("#nitroslavLogo").css({ visibility: "visible", opacity: "1" }).delay(1000);
   $("#startBtn").css("visibility", "visible").fadeTo(700, 1);
-console.log(`youre currently on  page: ${pageIndex}`);
+  console.log(`youre currently on  page: ${pageIndex}`);
 
   // .delay(3000) dont forget to add to the start btn
   $("#startBtn").click(function () {
     hideAll();
     $("#chooseScreen").show();
     pageIndex = 2;
-console.log(`youre currently on  page: ${pageIndex}`);
+    console.log(`youre currently on  page: ${pageIndex}`);
   });
 
   $("#continueBtn").click(function () {
@@ -35,7 +42,7 @@ console.log(`youre currently on  page: ${pageIndex}`);
     $("#chooseScreen").show();
     pageIndex = 2;
     console.log(`youre currently on  page: ${pageIndex}`);
-    });
+  });
 
   $("#continueBtn2").click(function () {
     hideAll();
@@ -46,12 +53,24 @@ console.log(`youre currently on  page: ${pageIndex}`);
   });
   // script for menu
   $("#quit").click(function () {
-    hideAll();
-    $("#chooseScreen").show();
-        $("#gameMenu").hide();
-
+    $("#sureToQuit").show();
+popupVisible = true;    
+updatePointerState()
     pageIndex = 2;
     console.log(`youre currently on  page: ${pageIndex}`);
+  });
+  $("#yeah").click(function () {
+    hideAll();
+    $("#chooseScreen").show();
+    popupVisible = false;    
+updatePointerState()
+    $("#gameMenu").hide();
+  });
+  $("#nah").click(function () {
+    $("#sureToQuit").hide();
+    popupVisible = false;    
+    updatePointerState()
+
   });
   $("#cancel").click(function () {
     $("#gameMenu").hide();
@@ -70,5 +89,3 @@ $(document).ready(function () {
     $("#chooseBG").show();
   });
 });
-
-

@@ -294,7 +294,7 @@ function hideMenuBtns() {
   inGameBtnsMenu.classList.add("notVisible");
   outGameBtnsMenu.classList.add("notVisible");
 }
-
+// script for the popup when wanting to quit the game
 
 menuIconBtn.addEventListener("click", () => {
   gameMenu.style.display = "block";
