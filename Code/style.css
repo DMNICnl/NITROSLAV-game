@@ -72,7 +72,7 @@ transform: translate(-4px, 4px);
    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
 transform: translate(-4px, 4px);
 }
-#menuIcon{
+.menuIcon{
   position: absolute;
   transform: translate(-20px, 10px);
   z-index: 2000;
@@ -94,6 +94,17 @@ transform: translate(-4px, 4px);
   font-size: 24px;
   padding: 15px;
 }
+.settingIndexes{
+  display: none;
+}
+.settingIndexes.activeIndex{
+  display: block;
+}
+.menuBtnsActive{
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+    transform: translate(-3px );
+}
+/* css for the audio setting in menu */
 .masterSlider{
   display: flex;
   justify-content: space-between;
@@ -142,6 +153,70 @@ opacity: 1;
   position: absolute;
   margin-top: 30px;
 }
+/*  css for the settings of gameplay in menu */
+.slickButtons{
+  display: flex;
+    justify-content: space-between;
+
+  font-size: 20px;
+  margin: 30px;
+  gap: 10px;
+}
+.cutSceneBtns{
+  display: flex;
+  flex-direction: column;
+}
+.slickButtons hr{
+  rotate: 20deg;
+}
+.slickButtons button, .sysCreative button{
+  padding: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border: 2px solid #202653ff;
+  color: var(--orange-color);
+  background-color: #1d3a76ff;
+    filter: drop-shadow(-2px 2px 0px var(--shadow-hud-buttons));
+}
+.slickButtons button:active{
+    filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
+    transform: translate(-3px );
+}
+.speedUnitBtns{
+  display: flex;
+  gap: 10px; 
+}
+.diaBtns{
+  display: flex;
+  gap: 10px;
+}
+.cutSceneBtns button{
+  margin-top: 10px;
+}
+/* css for system settings in menu */
+.sysCreative{
+  display: flex;
+    justify-content: space-between;
+
+  font-size: 20px;
+  margin: 30px;
+  gap: 10px;
+}
+.sysCreative hr{
+rotate: 20deg;
+}
+.sysCreative span {
+  font-size: 18px;
+}
+.sysCreative:nth-of-type(3){
+display: flex;
+flex-direction: column;
+text-align: left;
+}
+.sysCreative:nth-of-type(3) p{
+  margin-top: 15px;
+}
+
 /* start screen css */
 .startBG{
     position: fixed;
@@ -362,7 +437,7 @@ transform: translate(-4px, 4px);
     filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
 transform: translate(-4px, 4px);
 }
-#menuIcon:active{
+.menuIcon:active{
     filter: drop-shadow(0px 0px 0px var(--shadow-hud-buttons));
 transform: translate(-24px, 13px);
 }

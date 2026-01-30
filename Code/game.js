@@ -18,7 +18,6 @@ function initGame() {
       break;
     }
   }
-
   // get cars frame array
   const carFrames = carAnimations[selectedCarKey];
 
@@ -180,8 +179,8 @@ function showSlides(n) {
   slides[slideIndex - 1].style.display = "block";
   const active = slides[slideIndex - 1];
 
-  console.log(active.dataset.name);
-  console.log(active.dataset.src);
+  console.log("current car: "+ active.dataset.name);
+  console.log("current car source: "+ active.dataset.src);
 
   dots[slideIndex - 1].className += " active";
 }
@@ -275,42 +274,38 @@ function handleContinueToGame() {
 // script for hub buttons
 const arrowUpBtn = document.querySelector("#arrowUp");
 const nosBtn = document.querySelector("#nos");
-const menuIconBtn = document.querySelector("#menuIcon");
+const menuIconBtn = document.querySelector(".menuIcon");
+const menuIconBtnInGame = document.querySelector("#menuIcon2");
 const pauseBtnInMenu = document.querySelector("#pause");
 const quitBtnInMenu = document.querySelector("#quit");
+const cancelBtnInMenu = document.querySelector("#cancel");
+const inGameBtnsMenu = document.querySelector("#inGameBtnsMenu");
+const outGameBtnsMenu = document.querySelector("#outGameBtnsMenu");
+let pageIndex = "start";
 
-// let menuItem1 = document.querySelector("#menuItem1")
-// let menuItem2 = document.querySelector("#menuItem2")
-// let menuItem3 = document.querySelector("#menuItem3")
 let mmenuItems = document.querySelectorAll(".menuItems");
+let settingIndexes = document.querySelectorAll(".settingIndexes");
 
 const gameMenu = document.querySelector(".gameMenu");
 // display the menu itself
 menuIconBtn.addEventListener("click", () => {
   gameMenu.style.display = "block";
-  menuItem1.classList.add("menuBarClicked");
 });
 pauseBtnInMenu.addEventListener("click", () => {
   gameMenu.style.display = "none";
 });
-// clicked attribute for selected menu bar item
-// menuItem1.addEventListener("click", () => {
-//   menuItem1.classList.add("menuBarClicked")
-// });
-// menuItem1.addEventListener("click", () => {
-//   menuItem1.classList.add("menuBarClicked")
-// });
-// menuItem1.addEventListener("click", () => {
-//   menuItem1.classList.add("menuBarClicked")
-// });
-mmenuItems.forEach(btn => {
-  btn.addEventListener("click", () =>{
-mmenuItems.forEach(b => b.classList.remove("menuBarClicked"))
-    btn.classList.add("menuBarClicked");
-  })
 
+mmenuItems.forEach((btn, index) =>{
+  btn.addEventListener("click", ()=>{
+    mmenuItems.forEach(b => b.classList.remove("menuBarClicked"));
+    btn.classList.add("menuBarClicked");
+    settingIndexes.forEach(i => i.classList.remove("activeIndex"));
+    settingIndexes[index].classList.add("activeIndex")
+  })
 })
-// script for the music sliders
+mmenuItems[0].classList.add("menuBarClicked");
+settingIndexes[0].classList.add("activeIndex");
+// script for the music sliders in menu
 let musicSlider = document.querySelectorAll(".slider");
 let musicValue = document.querySelectorAll(".valueOfMusic");
 
@@ -328,20 +323,20 @@ musicSlider.forEach(sl =>{
     sl.style.background = color
   })
 })
-//TODO script for bg music playing
-//TODO let playBgMusic = document.querySelector("#playBgMusic");
-//TODO const playlist = [
-//TODO   "../Audio/Atlantis   Outland 2025 remaster.mp3",
-//TODO   "../Audio/Trango.mp3"
-//TODO ];
-
-//TODO let musicIndex = 0;
-//TODO function playNext(){
-//TODO   playBgMusic.src = playlist[musicIndex];
-//TODO   playBgMusic.play();
-//TODO }
-//TODO playBgMusic.addEventListener("ended", () =>{
-//TODO   musicIndex = (musicIndex +1) % playlist.length;
-//TODO   playNext();
-//TODO });
-//TODO playNext();
+// !uncomment for bg music
+//script for bg music playing
+let playBgMusic = document.querySelector("#playBgMusic");
+const playlist = [
+   "../Audio/Atlantis   Outland 2025 remaster.mp3",
+   "../Audio/Trango.mp3"
+];
+  let musicIndex = 0;
+  function playNext(){
+ playBgMusic.src = playlist[musicIndex];
+ playBgMusic.play();
+}
+playBgMusic.addEventListener("ended", () =>{
+ musicIndex = (musicIndex +1) % playlist.length;
+ playNext();
+});
+playNext();

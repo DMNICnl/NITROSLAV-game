@@ -31,8 +31,8 @@
     <!-- game music -->
 
     <audio id="playBgMusic"></audio>
-    <img src="../icons/menu.PNG" alt="" id="menuIcon" />
-    <div class="gameMenu">
+    <img src="../icons/menu.PNG" alt="" class="menuIcon" id="menuIcon" />
+    <div class="gameMenu" id="gameMenu">
       <nav class="menuBar">
         <ul>
           <li class="menuItems" id="menuItem1">Audio</li>
@@ -40,7 +40,7 @@
           <li class="menuItems" id="menuItem3">System</li>
         </ul>
       </nav>
-      <div class="audioSettings" id="audioSettings">
+      <div class="audioSettings settingIndexes" id="audioSettings">
         <div class="masterSlider">
           <p>Master volume:</p>
           <input
@@ -84,9 +84,69 @@
           Value: <span class="valueOfMusic" id="value"></span>
         </p>
       </div>
-      <div class="menu-btns">
+      <div class="gameplaySettings settingIndexes">
+        <div class="slickButtons">
+          <p>Speed units:</p>
+          <div class="speedUnitBtns">
+            <button id="switchEuropean">Km/h</button>
+            <hr />
+            <button id="switchAmerican">mph</button>
+          </div>
+        </div>
+        <div class="slickButtons">
+          <p>Dialogue speed:</p>
+          <div class="diaBtns">
+            <button id="diaSlow">Slow</button>
+            <hr />
+            <button id="diaMedi">Normal</button>
+            <hr />
+            <button id="diaFast">Fast</button>
+          </div>
+        </div>
+        <div class="slickButtons">
+          <p>Skip cutscenes:</p>
+          <div class="cutSceneBtns">
+            <button id="allowSkip">Allow Skip</button>
+            <button id="disSkip">Disable Skip</button>
+            <button id="skipAftereFirst">
+              Only Skip After First Playthrough
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="systemSettings settingIndexes">
+        <div class="sysCreative">
+          <p>Language:</p>
+          <button id="EN">English</button>
+          <hr />
+          <button id="NL">Nederlands</button>
+          <hr />
+          <button id="SK">Slovenský</button>
+        </div>
+        <div class="sysCreative">
+          <p>Reset to default:</p>
+          <button id="setGameSettingsToDefault">Reset</button>
+        </div>
+        <div class="sysCreative">
+          <p>Credits</p>
+          <p>Created & Developed by:</p>
+          <span>DMNIC</span>
+          <p>Story, Art & Programming:</p>
+          <span>DMNIC</span>
+          <p>Music:</p>
+          <span>Outland by Atlantis</span>
+          <span>Trango by Naked Funk</span>
+          <p>Special Thanks:</p>
+          <span>Friends, testers, and the Nitroslav community</span>
+        </div>
+      </div>
+      <div class="menu-btns" id="inGameBtnsMenu" >
         <img src="../icons/resume.PNG" alt="" id="pause" />
         <img src="../icons/quit.PNG" alt="" id="quit" />
+      </div>
+      <div class="menu-btns" id="outGameBtnsMenu" >
+        <img src="../icons/apply.PNG" alt="" id="apply" />
+        <img src="../icons/cancel.PNG" alt="" id="cancel" />
       </div>
     </div>
 
@@ -96,7 +156,7 @@
     <!-- start screen -->
     <div id="startBG" class="startBG"></div>
 
-    <div id="startScreen" class="start-screen">
+    <div id="startScreen" class="start-screen" data-name="startScreen">
       <!-- ! remove hidden -->
       <video
         id="nitroslavLogo"
@@ -123,7 +183,7 @@
     <!-- choose character page -->
     <div id="chooseBG" class="chooseBG"></div>
 
-    <div id="chooseScreen" class="choose-screen">
+    <div id="chooseScreen" class="choose-screen" data-name="choosesCreenCar">
       <h1 id="chooseCarTxt">Choose your car</h1>
 
       <div class="character-container">
@@ -315,6 +375,8 @@
     </div>
     <!-- the game page -->
     <div id="gameIndex" class="game-index">
+          <img src="../icons/menu.PNG" alt="" class="menuIcon" id="menuIcon2" />
+
       <canvas id="gameCanvas" class="gameCanvas"></canvas>
 
       <div class="hud">
