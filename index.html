@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Jersey+10&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lexend:wght@100..900&family=Outfit:wght@100..900&family=Pixelify+Sans:wght@400..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Silkscreen:wght@400;700&family=VT323&display=swap" rel="stylesheet">
     <!-- style -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <!-- js library´s -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
@@ -23,8 +23,6 @@
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
   <body>
-    <script src="pages.js" defer></script>
-    <script src="game.js" defer></script>
     <!-- game music -->
 
     <audio id="playBgMusic"></audio>
@@ -32,12 +30,12 @@
       <div class="sureToQuit-items">
       <p>Are you sure you wanna quit?</p>
       <div class="popup-btns">
-        <img id="yeah" src="../icons/yeah.PNG" alt="">
-        <img id="nah" src="../icons/nah.PNG" alt="">
+        <img id="yeah" src="icons/yeah.PNG" alt="">
+        <img id="nah" src="icons/nah.PNG" alt="">
       </div>
       </div>
     </div>
-    <img src="../icons/menu.PNG" alt="" class="menuIcon" id="menuIcon" />
+    <img src="icons/menu.PNG" alt="" class="menuIcon" id="menuIcon" />
     <div class="gameMenu" id="gameMenu">
       <nav class="menuBar">
         <ul>
@@ -147,12 +145,12 @@
         </div>
       </div>
       <div class="menu-btns" id="inGameBtnsMenu" >
-        <img src="../icons/resume.PNG" alt="" id="pause" />
-        <img src="../icons/quit.PNG" alt="" id="quit" />
+        <img src="icons/resume.PNG" alt="" id="pause" />
+        <img src="icons/quit.PNG" alt="" id="quit" />
       </div>
       <div class="menu-btns" id="outGameBtnsMenu" >
-        <img src="../icons/apply.PNG" alt="" id="apply" />
-        <img src="../icons/cancel.PNG" alt="" id="cancel" />
+        <img src="icons/apply.PNG" alt="" id="apply" />
+        <img src="icons/cancel.PNG" alt="" id="cancel" />
       </div>
     </div>
 
@@ -171,7 +169,7 @@
         muted
         playsinline
       >
-        <source src="../Art/nitroslavLogo.webm" type="video/webm" />
+        <source src="Art/nitroslavLogo.webm" type="video/webm" />
       </video>
       <video
         id="nitroslavLoop"
@@ -181,7 +179,7 @@
         muted
         playsinline
       >
-        <source src="../Art/nitroslavLogoLoop.webm" type="video/webm" />
+        <source src="Art/nitroslavLogoLoop.webm" type="video/webm" />
       </video>
 
       <button id="startBtn"><p>start</p></button>
@@ -197,14 +195,14 @@
           id="firstChar"
           class="choose-character"
           data-name="Bemwe E30"
-          data-src="../Art/bmwe30_1.PNG"
+          data-src="Art/bmwe30_1.PNG"
         >
           <div class="myChar fade">
             <div class="char-caption">Bemwe E30</div>
             <img
               id="bmw"
               class="cars"
-              src="../Art/bmwe30_1.PNG"
+              src="Art/bmwe30_1.PNG"
               alt="BMW E30"
             />
           </div>
@@ -221,14 +219,14 @@
           id="secondChar"
           class="choose-character"
           data-name="Mercedes cl"
-          data-src="../Art/merc_1.PNG"
+          data-src="Art/merc_1.PNG"
         >
           <div class="myChar fade">
             <div class="char-caption">Mercedes cl</div>
             <img
               id="mercedes"
               class="cars"
-              src="../Art/merc_1.PNG"
+              src="Art/merc_1.PNG"
               alt="Mercedes cl"
             />
           </div>
@@ -245,14 +243,14 @@
           id="thirdChar"
           class="choose-character"
           data-name="Microlino"
-          data-src="../Art/micro_1.PNG"
+          data-src="Art/micro_1.PNG"
         >
           <div class="myChar fade">
             <div class="char-caption">Microlino</div>
             <img
               id="microlino"
               class="cars"
-              src="../Art/micro_1.PNG"
+              src="Art/micro_1.PNG"
               alt="Microlino"
             />
           </div>
@@ -271,14 +269,14 @@
           id="fourthChar"
           class="choose-character"
           data-name="Seat leon"
-          data-src="../Art/seat_1.PNG"
+          data-src="Art/seat_1.PNG"
         >
           <div class="myChar fade">
             <div class="char-caption">Seat leon</div>
             <img
               id="seat"
               class="cars"
-              src="../Art/seat_1.PNG"
+              src="Art/seat_1.PNG"
               alt="Seat leon"
             />
           </div>
@@ -319,7 +317,7 @@
           <div class="myMap fade">
             <div class="map-caption">Pezinok</div>
             <img
-              src="../Art/Gemini_Generated_Image_qg1ynmqg1ynmqg1y.png"
+              src="Art/Gemini_Generated_Image_qg1ynmqg1ynmqg1y.png"
               alt="pezinok"
             />
           </div>
@@ -386,11 +384,17 @@
 
       <div class="hud">
         <div class="inlineBtns">
-          <img src="../icons/nos.PNG" alt="" id="nos" notClickable />
-          <img src="../icons/arrowUp.PNG" alt="" id="arrowUp" />
+          <img src="icons/nos.PNG" alt="" id="nos" notClickable />
+          <img src="icons/arrowUp.PNG" alt="" id="arrowUp" />
         </div>
       </div>
     </div>
     <div class="gameOver-screen"></div>
+    
+    <script src="js/pages.js" ></script>
+    <script src="js/cars.js"></script>
+    <script src="js/maps.js"></script>
+    <script src="js/game.js" ></script>
+    <script src="js/ui.js"></script>
   </body>
 </html>
