@@ -170,6 +170,8 @@ function handleContinueToGame() {
   console.log(
     "this is also the map path" + sessionStorage.getItem("choosenMapPath"),
   );
+  initGame();
+
 }
 
 //   MENU DISPLAY HELPERS ///////////////////
