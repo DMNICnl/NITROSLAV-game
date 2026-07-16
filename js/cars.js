@@ -9,8 +9,8 @@ let cars=[
   name: "BMW E30",
   frames:  ["../Art/bmwe30_1.PNG", "../Art/bmwe30_2.PNG"],
   // appearence on canvas
-  width: 64,
-  height: 32,
+  width: 640,
+  height: 320,
 
   // physiycs n stuff
   baseSpeed: 1.2,
