@@ -145,7 +145,7 @@ continueBtn2.addEventListener("click", handleContinueToGame);
 function handleContinue() {
   const active = slides[slideIndex - 1];
 
-  let selectedCarIndex = active.dataset.name;
+  let selectedCarIndex = active.dataset.id;
   let selectedcarSrc = active.dataset.src;
 
   sessionStorage.setItem("choosenCar", selectedCarIndex);
@@ -170,8 +170,13 @@ function handleContinueToGame() {
   console.log(
     "this is also the map path" + sessionStorage.getItem("choosenMapPath"),
   );
-  initGame();
 
+  hideAll();
+  $("#gameIndex").show();
+  pageIndex = 4;
+  console.log(`youre currently on  page: ${pageIndex}`);
+
+  initGame();
 }
 
 //   MENU DISPLAY HELPERS ///////////////////

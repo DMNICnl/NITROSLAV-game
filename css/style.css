@@ -497,8 +497,3 @@ transform: translate(-4px, 4px);
 transform: translate(-24px, 13px);
 }
 /* continue to make phone rotated for playing on phone */
-@media screen and (max-width: 769px) {
-  body{
-    rotate: 90deg;
-  }
-}

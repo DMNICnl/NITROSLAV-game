@@ -44,13 +44,7 @@ $(document).ready(function () {
     console.log(`youre currently on  page: ${pageIndex}`);
   });
 
-  $("#continueBtn2").click(function () {
-    hideAll();
-    $("#gameIndex").show();
-    pageIndex = 4;
-    console.log(`youre currently on  page: ${pageIndex}`);
-    initGame();
-  });
+  // #continueBtn2 (page transition + initGame) is handled in ui.js's handleContinueToGame
   // script for menu
   $("#quit").click(function () {
     $("#sureToQuit").show();

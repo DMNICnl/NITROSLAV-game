@@ -7,24 +7,60 @@ ctx.imageSmoothingEnabled = false;
 
 // GAME INIT + CANVAS RENDER LOOP
 function initGame() {
-  /* ===============================
-     SELECT CAR FROM cars[]
-     =============================== */
-
-  // You stored this in UI
+// selct a car from menu
   const selectedCarId = sessionStorage.getItem("choosenCar"); 
-  // fallback if nothing selected
   const selectedCar =
     cars.find((car) => car.id === selectedCarId) ?? cars[0];
 
   const carFrames = selectedCar.frames;
 
   /* ===============================
-     CAR IMAGE SETUP
+     CAR IMAGE SETUP (2-frame driving animation)
      =============================== */
   let frameIndex = 0;
-  const carImg = new Image();
-  carImg.src = carFrames[0];
+  let frameTimer = 0;
+  const frameDuration = 150; // ms per animation frame
+
+  let carFramesLoaded = 0;
+  const carImages = carFrames.map((src) => {
+    const img = new Image();
+    img.src = src;
+    img.onload = () => {
+      carFramesLoaded++;
+      tryStart();
+    };
+    return img;
+  });
+
+  /* ===============================
+     JUMP PHYSICS (based on car mass)
+     heavier mass -> weaker jump + faster fall
+     lighter mass -> higher jump + floatier fall
+     =============================== */
+  const REFERENCE_MASS = 1200;
+  const BASE_JUMP_SPEED = 900;
+  const BASE_GRAVITY = 2200;
+
+  const groundY = 600;
+  let carY = groundY;
+  let velocityY = 0;
+  let isJumping = false;
+
+  const jumpSpeed = BASE_JUMP_SPEED * (REFERENCE_MASS / selectedCar.mass);
+  const gravity = BASE_GRAVITY * (selectedCar.mass / REFERENCE_MASS);
+
+  function jump() {
+    if (isJumping) return;
+    isJumping = true;
+    velocityY = -jumpSpeed;
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") jump();
+  });
+
+  const arrowUpBtn = document.querySelector("#arrowUp");
+  if (arrowUpBtn) arrowUpBtn.addEventListener("click", jump);
 
   /* ===============================
      MAP LAYERS LOADING
@@ -45,14 +81,8 @@ function initGame() {
   /* ===============================
      START GAME ONLY WHEN READY
      =============================== */
-  let carLoaded = false;
-  carImg.onload = () => {
-    carLoaded = true;
-    tryStart();
-  };
-
   function tryStart() {
-    if (!carLoaded) return;
+    if (carFramesLoaded !== carImages.length) return;
     if (layersLoaded !== gameMapFiles.length) return;
     requestAnimationFrame(drawFrame);
   }
@@ -62,9 +92,9 @@ function initGame() {
      =============================== */
   function drawCar() {
     ctx.drawImage(
-      carImg,
+      carImages[frameIndex],
       300,
-      600,
+      carY,
       selectedCar.width,
       selectedCar.height
     );
@@ -106,6 +136,23 @@ function initGame() {
     lastTime = timestamp;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    frameTimer += deltaTime;
+    if (frameTimer >= frameDuration) {
+      frameTimer -= frameDuration;
+      frameIndex = (frameIndex + 1) % carImages.length;
+    }
+
+    if (isJumping) {
+      velocityY += gravity * (deltaTime / 1000);
+      carY += velocityY * (deltaTime / 1000);
+
+      if (carY >= groundY) {
+        carY = groundY;
+        velocityY = 0;
+        isJumping = false;
+      }
+    }
 
     ctx.drawImage(layers[0], 0, 0, canvas.width, canvas.height);
     natureX   = loopLayer(layers[1], natureX,   scrollSpeed * 0.5,  deltaTime);
